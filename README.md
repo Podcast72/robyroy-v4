@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/Slide.jpg" alt="Robyroy-V4 — Governed Operator Skill" width="900">
+  <img src="assets/slide2.jpg" alt="Robyroy-V4 — Governed Operator Skill" width="900">
 </p>
 
 # Robyroy-V4
