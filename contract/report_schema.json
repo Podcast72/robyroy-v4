@@ -37,5 +37,11 @@
     "STANDARD",
     "SECURE_BY_DEFAULT"
   ],
-  "auto_apply": false
+  "auto_apply": false,
+  "optional_outputs": [
+    "HOOK_READINESS_STATUS",
+    "HOOKS_ACTIVE",
+    "TRUST_REVIEW_REQUIRED",
+    "GLOBAL_CONFIG_STATUS"
+  ]
 }

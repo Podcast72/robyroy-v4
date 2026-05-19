@@ -473,5 +473,95 @@
       "run_local_validation"
     ],
     "auto_apply": false
+  },
+  "HOOK_GLOBAL_CONFIG_BLOCKED": {
+    "severity": "block",
+    "human_message": "Global Codex hook configuration cannot be modified without explicit user approval.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation",
+      "create_manual_snippet_only"
+    ],
+    "auto_apply": false
+  },
+  "HOOK_ACTIVATION_REQUIRES_APPROVAL": {
+    "severity": "block",
+    "human_message": "Hook activation requires explicit user approval and manual trust review.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation",
+      "create_manual_snippet_only"
+    ],
+    "auto_apply": false
+  },
+  "HOOK_AIOS_INTERFERENCE_RISK": {
+    "severity": "block",
+    "human_message": "Hook activation is blocked during AIOS validation work to avoid falsifying test evidence.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation",
+      "create_manual_snippet_only"
+    ],
+    "auto_apply": false
+  },
+  "HOOK_LOOP_RISK": {
+    "severity": "block",
+    "human_message": "Stop hook continuation may create a loop unless explicit continuation markers and chain limits are present.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation",
+      "create_manual_snippet_only"
+    ],
+    "auto_apply": false
+  },
+  "HOOK_SMOKE_TEST_MISSING": {
+    "severity": "warn",
+    "human_message": "Hook readiness pack exists but smoke tests were not run or did not pass.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation",
+      "create_manual_snippet_only"
+    ],
+    "auto_apply": false
   }
 }

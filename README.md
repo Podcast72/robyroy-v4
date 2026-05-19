@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/slide2.jpg" alt="Robyroy-V4 — Governed Operator Skill" width="900">
+  <img src="assets/Slide.jpg" alt="Robyroy-V4 — Governed Operator Skill" width="900">
 </p>
 
 # Robyroy-V4
@@ -91,6 +91,27 @@ generate mini-prompt → guard check → use inside current task → log event �
 
 The chain is bounded. It is not a daemon, background process or external automation. It is internal skill orchestration for the current task.
 
+## Codex Hook Readiness
+
+Robyroy-V4 also includes a Codex Hook Readiness model for teams or users who want project-local lifecycle automation.
+
+The idea is simple: keep the skill portable, then add optional project-local hooks only where a project needs stronger automation.
+
+- UserPromptSubmit hook template for V4 invocation logging
+- PreToolUse guard template for risky operations
+- Stop hook template for marker-based controlled continuation
+- Hook smoke tests
+- Manual trust review through `/hooks`
+- Project-local activation strategy
+
+This makes hooks an optional acceleration layer, not a hidden global behavior.
+
+```text
+Skill → Contract → Runner → Hook Readiness → Project-local Review
+```
+
+See [Codex Hook Readiness](docs/11-codex-hooks.md) for the full model.
+
 ## Repository structure
 
 ```text
@@ -106,9 +127,17 @@ robyroy-v4/
 ├── scripts/
 ├── references/
 ├── docs/
+│   └── 11-codex-hooks.md
 ├── examples/
+│   └── codex-hook-readiness/
+├── hooks-readiness/
+│   ├── README.md
+│   ├── hook-design-notes.md
+│   ├── config.snippet.example.toml
+│   ├── hooks.json.example
+│   └── scripts/
 ├── assets/
-│   └── Slide.PNG
+│   └── assets/Slide.jpg
 └── repo/
     └── suggested-layout.md
 ```

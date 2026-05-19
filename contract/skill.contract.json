@@ -79,5 +79,19 @@
     "requires_event_logging": true,
     "external_runtime_enforcement": false,
     "global_hooks_required": false
+  },
+  "codex_hook_readiness": {
+    "enabled": true,
+    "active_hooks": false,
+    "global_config_modification_allowed": false,
+    "project_local_hooks_preferred": true,
+    "manual_trust_required": true,
+    "candidate_events": [
+      "UserPromptSubmit",
+      "PreToolUse",
+      "Stop"
+    ],
+    "activation_policy": "proposal_only_until_user_approval",
+    "aios_interference_policy": "do_not_enable_during_aios_validation"
   }
 }

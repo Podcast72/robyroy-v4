@@ -63,7 +63,13 @@
     "automatic_chain_plan_creation",
     "automatic_safe_build_step_execution",
     "runner_fallback_to_manual_report",
-    "runner_usage_receipt"
+    "runner_usage_receipt",
+    "codex_hook_readiness_planning",
+    "hook_snippet_generation",
+    "hook_smoke_test_generation",
+    "project_local_hook_design",
+    "hook_risk_classification",
+    "hook_activation_plan_creation"
   ],
   "blocked_actions": [
     "self_modification_without_user_approval",
@@ -92,6 +98,11 @@
     "daemonized_runner",
     "background_runner",
     "hook_forced_execution_without_approval",
-    "uncontrolled_runner_loop"
+    "uncontrolled_runner_loop",
+    "activate_global_hooks_without_user_approval",
+    "modify_global_codex_config_without_user_approval",
+    "create_daemon_hook_runner",
+    "silent_hook_activation",
+    "untested_hook_activation"
   ]
 }

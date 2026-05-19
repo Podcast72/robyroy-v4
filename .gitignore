@@ -14,3 +14,5 @@ build/
 *.backup
 evolution/*.jsonl
 evolution/counters.json
+hooks-readiness/logs/*.jsonl
+.codex/hooks/logs/*.jsonl
