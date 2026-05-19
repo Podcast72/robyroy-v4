@@ -1,0 +1,26 @@
+{
+  "skill": "robyroy-v4",
+  "allowed_repair_hints": [
+    "stop_and_report",
+    "ask_for_confirmation",
+    "reduce_scope",
+    "switch_to_read_only",
+    "generate_patch_only",
+    "run_local_validation",
+    "downgrade_claim",
+    "list_missing_evidence",
+    "continue_without_config_changes",
+    "continue_without_hooks",
+    "create_manual_snippet_only"
+  ],
+  "forbidden_repair_hints": [
+    "silently_continue",
+    "ignore_scope",
+    "auto_modify_config",
+    "auto_activate_hooks",
+    "auto_self_patch",
+    "claim_success_without_tests",
+    "bypass_user_confirmation"
+  ],
+  "auto_apply": false
+}

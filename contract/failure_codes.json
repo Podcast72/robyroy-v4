@@ -1,0 +1,477 @@
+{
+  "SCOPE_BLOCKED": {
+    "severity": "block",
+    "human_message": "The requested target is outside the declared scope.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "MISSING_GOAL": {
+    "severity": "warn",
+    "human_message": "The goal contract is missing or incomplete.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "CAPABILITY_MISSING": {
+    "severity": "block",
+    "human_message": "The requested capability is not declared for this skill.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "UNSAFE_ACTION": {
+    "severity": "block",
+    "human_message": "The requested action is unsafe without explicit approval.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "CONFIG_MODIFICATION_BLOCKED": {
+    "severity": "block",
+    "human_message": "Global config modification is blocked.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "HOOK_ACTIVATION_BLOCKED": {
+    "severity": "block",
+    "human_message": "Hook activation is blocked.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "SELF_MODIFICATION_BLOCKED": {
+    "severity": "block",
+    "human_message": "Self-modification is blocked without a separate approved task.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "CLAIM_TOO_STRONG": {
+    "severity": "warn",
+    "human_message": "The requested or drafted claim is stronger than the evidence.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "CLAIM_NOT_PROVEN": {
+    "severity": "warn",
+    "human_message": "The claim is not supported by local checks.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "TEST_MISSING": {
+    "severity": "warn",
+    "human_message": "Required validation evidence is missing.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "REPORT_SCHEMA_FAILURE": {
+    "severity": "warn",
+    "human_message": "The final report is missing required sections.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "JSON_CONTRACT_INVALID": {
+    "severity": "block",
+    "human_message": "A contract JSON file is invalid or incomplete.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "V3_MODIFICATION_BLOCKED": {
+    "severity": "block",
+    "human_message": "Modifying robyroy-v3 is blocked in a V4 task.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "NETWORK_BLOCKED": {
+    "severity": "block",
+    "human_message": "Network access is blocked without explicit approval.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "SUDO_BLOCKED": {
+    "severity": "block",
+    "human_message": "sudo or system installation is blocked.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "GIT_PUSH_BLOCKED": {
+    "severity": "block",
+    "human_message": "git push is blocked.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "DESTRUCTIVE_ACTION_BLOCKED": {
+    "severity": "block",
+    "human_message": "Destructive file changes are blocked without explicit approval.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "DA_CONFERMARE_REQUIRED": {
+    "severity": "warn",
+    "human_message": "The task requires confirmation before action.",
+    "agent_next_steps": [
+      "stop",
+      "report_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only"
+    ],
+    "auto_apply": false
+  },
+  "MINI_PROMPT_SCOPE_BLOCKED": {
+    "severity": "block",
+    "human_message": "Mini-prompt blocked because it is outside the declared scope.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "MINI_PROMPT_POWER_REQUIRED": {
+    "severity": "block",
+    "human_message": "Mini-prompt requires POWER-level action and cannot be auto-executed.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "MINI_PROMPT_CHAIN_LIMIT_REACHED": {
+    "severity": "block",
+    "human_message": "Controlled mini-prompt chain reached the maximum allowed steps.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "MINI_PROMPT_GOAL_MISMATCH": {
+    "severity": "block",
+    "human_message": "Mini-prompt does not align with the current Goal Contract.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "EVENT_LOGGING_FAILED": {
+    "severity": "warn",
+    "human_message": "Event logging failed; task may continue only if logging failure is reported.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "IMPROVEMENT_THRESHOLD_REACHED": {
+    "severity": "warn",
+    "human_message": "Event threshold reached; improvement candidate should be proposed, not applied.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "RUNNER_NOT_AVAILABLE": {
+    "severity": "warn",
+    "human_message": "The controlled runner is not available; continue manually inside the skill and report the limitation.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "RUNNER_SCOPE_BLOCKED": {
+    "severity": "block",
+    "human_message": "The controlled runner blocked the next step because it is outside scope.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "RUNNER_POWER_BLOCKED": {
+    "severity": "block",
+    "human_message": "The controlled runner blocked the next step because it requires POWER.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "RUNNER_CHAIN_LIMIT_REACHED": {
+    "severity": "block",
+    "human_message": "The controlled runner reached max_chain_steps_per_task.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  },
+  "RUNNER_MANUAL_FALLBACK_USED": {
+    "severity": "warn",
+    "human_message": "The skill used manual internal reasoning because the runner could not be executed.",
+    "agent_next_steps": [
+      "stop_or_report",
+      "emit_failure_code",
+      "list_allowed_next_steps"
+    ],
+    "allowed_repair_hints": [
+      "stop_and_report",
+      "ask_for_confirmation",
+      "reduce_scope",
+      "switch_to_read_only",
+      "run_local_validation"
+    ],
+    "auto_apply": false
+  }
+}

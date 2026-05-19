@@ -1,0 +1,83 @@
+{
+  "name": "robyroy-v4",
+  "type": "governed_operator_skill",
+  "version": "0.1.0-prototype",
+  "status": "prototype",
+  "base_lineage": "robyroy-v3",
+  "modes": [
+    "SAFE",
+    "BUILD",
+    "POWER",
+    "REVIEW",
+    "PROMPT",
+    "DOC",
+    "RAPID",
+    "DA_CONFERMARE"
+  ],
+  "default_mode": "SAFE",
+  "claim_policy": "phase_limited",
+  "failure_policy": "fail_closed_when_risky",
+  "evolution": {
+    "passive_logging": true,
+    "suggest_improvements": true,
+    "auto_apply": false
+  },
+  "requires_human_confirmation_for": [
+    "network_access",
+    "sudo",
+    "git_push",
+    "git_commit",
+    "destructive_file_changes",
+    "global_config_edit",
+    "hook_activation",
+    "self_modification"
+  ],
+  "active_runtime_behaviors": {
+    "event_logging_on_invocation": true,
+    "event_logging_on_mode_detect": true,
+    "event_logging_on_scope_check": true,
+    "event_logging_on_mini_prompt": true,
+    "improvement_suggestion_thresholds": {
+      "total_events_light_review": 10,
+      "total_events_deep_review": 25,
+      "same_failure_code": 5,
+      "report_schema_failure": 3,
+      "mini_prompt_blocked": 3,
+      "scope_blocked": 3
+    },
+    "controlled_mini_prompt_chain": {
+      "enabled": true,
+      "max_chain_steps_per_task": 3,
+      "requires_scope_check": true,
+      "requires_goal_alignment": true,
+      "auto_execute_safe_build_only": true,
+      "auto_execute_power": false,
+      "auto_loop": false
+    }
+  },
+  "automatic_internal_runner_use": {
+    "enabled": true,
+    "user_manual_launch_required": false,
+    "trigger_conditions": [
+      "multi_step_task",
+      "documentation_heavy_task",
+      "validation_heavy_task",
+      "controlled_continuation_needed",
+      "mini_prompt_chain_available"
+    ],
+    "max_chain_steps_per_task": 3,
+    "allowed_modes": [
+      "SAFE",
+      "BUILD"
+    ],
+    "blocked_modes": [
+      "POWER",
+      "DA_CONFERMARE"
+    ],
+    "requires_scope_check_before_each_step": true,
+    "requires_goal_alignment_before_each_step": true,
+    "requires_event_logging": true,
+    "external_runtime_enforcement": false,
+    "global_hooks_required": false
+  }
+}

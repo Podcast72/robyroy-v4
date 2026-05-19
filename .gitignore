@@ -1,0 +1,16 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+_tmp/
+tmp/
+.cache/
+node_modules/
+dist/
+build/
+*.bak
+*.backup
+evolution/*.jsonl
+evolution/counters.json
