@@ -5,192 +5,121 @@
 # Robyroy-V4
 ## Governed Operator Skill for Structured Agent Work
 
-Robyroy-V4 turns agent work into structured, scoped, validated and traceable execution.
+Robyroy-V4 is an experimental local skill for Codex/Cody-style agents. It turns open-ended agent work into scoped, goal-driven, checked and reportable execution.
 
-## What is Robyroy-V4?
+It is not AIOS, not a production security runtime and not global enforcement. It is a local operating discipline made of instructions, contract files, helper scripts, templates, checks, private event logs and proposal-only improvement loops.
 
-Robyroy-V4 is a Governed Operator Skill for local agents such as Codex and Cody. It is designed to help an agent move from an open-ended request to controlled execution through operative modes, a Goal Contract, Scope Guard, an Agent Skill Contract Layer, Active Event Logging, a Controlled Mini-Prompt Chain, local validation and a final receipt.
+## What Robyroy-V4 Is Today
 
-It is more than a long prompt. It is a reusable operating pattern with instructions, contract files, local scripts and validation checks that make agent work easier to inspect, continue and review.
+Robyroy-V4 helps an agent work through:
 
-## Why it exists
+- a clear mode and Goal Contract;
+- explicit scope and forbidden actions;
+- Karpathy-style coding discipline: think first, keep changes simple, modify only relevant files and tie every edit to a goal;
+- controlled mini-prompt chains for bounded multi-step work;
+- prompt-chain/self-handoff trace files when continuation planning matters;
+- lifecycle receipts that declare logging, trace, handoff, prompt-chain, runner, report-check and improvement-candidate status;
+- local event/usage logging and proposal-only improvement candidates;
+- hook readiness material for project-local, manually reviewed hooks.
 
-A long prompt can help an agent behave better, but it remains fragile. It can be forgotten, interpreted loosely or applied inconsistently across tasks.
+The skill is designed to reduce ambiguity. A V4 run should say what happened, what was checked, what was not applicable and what remains limited.
 
-Robyroy-V4 packages the method as a skill. The workflow becomes reusable. The boundaries become explicit. The contract layer makes expectations machine-readable. Local checks make the work easier to validate before it is presented as done.
+## Core Idea
 
-The goal is practical: help agents do real work with clearer scope, safer continuation and better final reporting.
+```text
+User goal -> V4 session -> Goal Contract -> Scope/claim discipline -> Patch/check/report -> Lifecycle receipt
+```
 
-## Core idea
+For non-trivial tasks, V4 should open a lightweight local session, record relevant events when safe, apply compact pre-edit discipline, check the final report and close with lifecycle statuses. For tiny tasks, the lifecycle may be compact, but the final report should still declare what was applicable.
 
-**Goal → Skill → Guard → Runner → Result**
+## Architecture
 
-- **Goal:** the user defines the task.
-- **Skill:** Robyroy-V4 structures the workflow.
-- **Guard:** scope, mode and risk are checked.
-- **Runner:** multi-step work can be split into controlled mini-prompts.
-- **Result:** the final output is validated and reported.
+- `SKILL.md`: the main human/operator instructions loaded by the agent.
+- `contract/*.json`: machine-readable contract, capabilities, failure codes, report schema and repair hints.
+- `scripts/*.py`: deterministic local helpers for mode detection, scope/report checks, usage logs, lifecycle actions, controlled runners and doctor checks.
+- `templates/*.md`: stable forms for AGENTS files, project context, trace files, handoff notes and lifecycle receipts.
+- `evolution/*.jsonl`: local/private event, usage and improvement logs. These are runtime artifacts, not public evidence to publish.
+- `hooks-readiness/`: proposal-only hook readiness pack. Hooks are not active by default.
 
-## Key capabilities
+## Current Capability Map
 
-### Mode Detection
+### Goal and Scope Discipline
 
-Classifies work as SAFE, BUILD, POWER, REVIEW, PROMPT, DOC, RAPID or DA_CONFERMARE so the agent can choose the right level of caution.
+V4 starts from a goal, workspace, allowed paths, forbidden paths, success criteria, validation plan and stop conditions. If scope is unclear, it should stop or ask a precise question.
 
-### Goal Contract
+### Karpathy Discipline Layer
 
-Defines the user goal, workspace, allowed paths, forbidden paths, success criteria, validation commands, stop conditions and claim limits before meaningful work begins.
+For coding/refactor/patch/migration tasks, V4 should:
 
-### Scope Guard
+- think before editing;
+- prefer the smallest sufficient change;
+- avoid speculative abstraction and unrequested feature expansion;
+- change only files directly connected to the objective;
+- report why each file changed;
+- avoid strong claims unless evidence supports them.
 
-Checks whether a target path or action is inside the declared workspace and outside forbidden targets.
+This is local behavior guidance, not magic enforcement.
 
-### Agent Skill Contract Layer
+### Trace / Logging Applicability Policy
 
-Adds machine-readable contract files for modes, capabilities, blocked actions, failure policies, report schema and repair hints.
+V4 should declare whether it logged, traced, used a runner, created handoff notes or used a prompt-chain. Micro-tasks may use `NOT_APPLICABLE`; serious tasks should log or explain why logging/trace was not created.
 
-### Capabilities Declaration
+### Auto Session Lifecycle
 
-Declares what the skill is allowed to do and which actions are blocked by design.
+The local skill includes `scripts/v4_session_lifecycle.py`, a small dependency-free orchestrator with actions such as `start`, `event`, `check-report`, `finish` and `suggest`.
 
-### Failure Codes
+Final receipts should include:
 
-Uses stable failure codes for blocked or risky situations, making stops easier to understand and repair.
+```text
+V4_SESSION_STATUS:
+EVENT_LOGGING_STATUS:
+V4_TRACE_STATUS:
+HANDOFF_STATUS:
+PROMPT_CHAIN_STATUS:
+RUNNER_STATUS:
+REPORT_CHECK_STATUS:
+IMPROVEMENT_CANDIDATE_STATUS:
+```
 
-### Report Schema
+### Controlled Mini-Prompt Chain and Handoff
 
-Defines a final receipt format so results include goal, scope, changed files, validations, limits, status and next action.
-
-### Active Event Logging
-
-Records operational events such as mode detection, scope checks, mini-prompt use, validation runs and task stops.
+For multi-step work, V4 can structure bounded next prompts and handoff notes. The chain is scoped, limited and must not become an autonomous loop. It must not execute POWER actions automatically.
 
 ### Improvement Candidates
 
-When repeated patterns appear, the skill can suggest improvement candidates for human review. It does not apply them automatically.
+V4 can record repeated issues or improvement candidates. These are proposal-only. They require user approval before any skill change is applied.
 
-### Controlled Mini-Prompt Chain
+### Hook Readiness
 
-Splits eligible multi-step work into small internal prompts, each checked before use.
+Hook readiness exists for future project-local automation. The recommended posture is warning/logging-only first, manual trust review and smoke tests. Global hooks are not active by default.
 
-### Doctor / Contract Checks
+## Practical Usage
 
-Local scripts validate the contract layer, required files and cautious operating rules.
-
-### Final Receipt
-
-Every run should end with a structured report that states what happened, what was checked and what remains limited.
-
-## How the Controlled Mini-Prompt Chain works
-
-Robyroy-V4 can generate internal mini-prompts to continue the current task. Before using a mini-prompt, it checks scope, mode, goal alignment, chain limit, forbidden actions and stop conditions.
-
-```text
-generate mini-prompt → guard check → use inside current task → log event → continue or stop
-```
-
-The chain is bounded. It is not a daemon, background process or external automation. It is internal skill orchestration for the current task.
-
-## Codex Hook Readiness
-
-Robyroy-V4 also includes a Codex Hook Readiness model for teams or users who want project-local lifecycle automation.
-
-The idea is simple: keep the skill portable, then add optional project-local hooks only where a project needs stronger automation.
-
-- UserPromptSubmit hook template for V4 invocation logging
-- PreToolUse guard template for risky operations
-- Stop hook template for marker-based controlled continuation
-- Hook smoke tests
-- Manual trust review through `/hooks`
-- Project-local activation strategy
-
-This makes hooks an optional acceleration layer, not a hidden global behavior.
-
-```text
-Skill → Contract → Runner → Hook Readiness → Project-local Review
-```
-
-See [Codex Hook Readiness](docs/11-codex-hooks.md) for the full model.
-
-## Repository structure
-
-```text
-robyroy-v4/
-├── README.md
-├── LICENSE
-├── NOTICE.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── SKILL.md
-├── contract/
-├── scripts/
-├── references/
-├── docs/
-│   └── 11-codex-hooks.md
-├── examples/
-│   └── codex-hook-readiness/
-├── hooks-readiness/
-│   ├── README.md
-│   ├── hook-design-notes.md
-│   ├── config.snippet.example.toml
-│   ├── hooks.json.example
-│   └── scripts/
-├── assets/
-│   └── assets/Slide.jpg
-└── repo/
-    └── suggested-layout.md
-```
-
-## Installation
-
-Install the skill manually into your Codex skills directory:
-
-```bash
-mkdir -p ~/.codex/skills
-cp -R robyroy-v4 ~/.codex/skills/robyroy-v4
-```
-
-Then invoke it explicitly:
+Short prompt style:
 
 ```text
 $robyroy-v4
+OBJECTIVE: Update this README section.
+CONSTRAINTS: no commit, no push, docs only.
 ```
 
-## Usage
-
-Example 1:
-
-```text
-$robyroy-v4
-Analyze this repository and produce a scoped improvement plan.
-```
-
-Example 2:
-
-```text
-$robyroy-v4
-Create a Goal Contract before editing this project.
-```
-
-Example 3:
-
-```text
-$robyroy-v4
-Run a controlled documentation update with validation and final receipt.
-```
+V4 should handle lifecycle/log/report discipline internally. The user should not need to remember every receipt status manually.
 
 ## Validation
 
-Run local checks from the repository root:
+Useful local checks:
 
 ```bash
 python3 scripts/v4_doctor_check.py
 python3 scripts/v4_contract_check.py
+python3 scripts/v4_report_check.py path/to/final-report.md
+python3 scripts/v4_session_lifecycle.py check-report --report path/to/final-report.md
 python3 scripts/v4_prompt_runner.py --list
 ```
 
-## Example final receipt
+Treat these as local checks, not external guarantees.
+
+## Example Lifecycle Receipt
 
 ```text
 MODE:
@@ -203,22 +132,24 @@ TESTS_VALIDATIONS:
 LIMITS:
 STATUS:
 NEXT_ACTION:
+V4_SESSION_STATUS:
+EVENT_LOGGING_STATUS:
+V4_TRACE_STATUS:
+HANDOFF_STATUS:
+PROMPT_CHAIN_STATUS:
+RUNNER_STATUS:
+REPORT_CHECK_STATUS:
+IMPROVEMENT_CANDIDATE_STATUS:
 STOP_CONDITIONS:
 ```
 
-## Project status
+## Limitations
 
-Robyroy-V4 is a structured experimental skill pattern for local agent workflows. It is designed to make agent work easier to scope, validate, continue and review through contracts, checks, event logging and controlled mini-prompt chains.
-
-## Roadmap
-
-- More usage examples
-- More contract fixtures
-- More validator checks
-- Public demo workflows
-- Improved documentation templates
-- Additional controlled runner examples
-- Cleaner install package
+- Local skill behavior depends on the agent following the skill.
+- Runtime logs are local/private and should not be published as public proof.
+- Hooks are readiness material unless a user separately reviews and activates project-local hooks.
+- V4 is not a replacement for runtime governance systems such as AIOS.
+- V4 is not a security product and should not be described as globally enforced.
 
 ## License
 

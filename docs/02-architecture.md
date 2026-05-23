@@ -1,39 +1,51 @@
 # Architecture
 
-Robyroy-V4 follows a structured execution path:
+Robyroy-V4 is organized as a local governed operator skill. Its architecture is intentionally simple: instructions, structured contracts, deterministic helper scripts, templates and local/private logs.
 
 ```text
-User Request → Mode Detection → Goal Contract → Scope Guard → Contract Layer → Controlled Runner → Validation → Final Receipt
+User Request -> V4 Session -> Goal Contract -> Scope/Claim Discipline -> Optional Runner/Trace -> Validation -> Lifecycle Receipt
 ```
 
-## User Request
+## Instruction Layer
 
-The user states the task and, when needed, the working directory and constraints.
-
-## Mode Detection
-
-The skill classifies the request as SAFE, BUILD, POWER, REVIEW, PROMPT, DOC, RAPID or DA_CONFERMARE.
-
-## Goal Contract
-
-The Goal Contract captures the outcome, workspace, allowed paths, forbidden paths, success criteria, validation commands and stop conditions.
-
-## Scope Guard
-
-The guard checks whether each planned target is inside the declared workspace and outside blocked targets.
+`SKILL.md` is the primary operator instruction file. It explains how the agent should classify work, define scope, apply Karpathy-style discipline, handle trace/logging applicability, use bounded prompt chains and close with a final receipt.
 
 ## Contract Layer
 
-JSON contract files declare capabilities, blocked actions, failure codes and report requirements.
+`contract/*.json` exposes important expectations in machine-readable form:
 
-## Controlled Runner
+- `skill.contract.json`: identity, modes, active behaviors, runner and lifecycle policies.
+- `capabilities.json`: allowed capabilities and blocked actions.
+- `failure_codes.json`: stable stop reasons.
+- `report_schema.json`: final receipt expectations and lifecycle status fields.
+- `repair_hints.json`: allowed and forbidden repair patterns.
 
-Eligible multi-step work can be split into bounded internal steps. Each step is checked before use.
+## Script Layer
 
-## Validation
+`scripts/*.py` contains small local helpers. They are dependency-free where practical and should fail safely. Important families include:
 
-Local scripts validate the contract, report format and operational health of the skill package.
+- mode/scope/report checks;
+- usage and event logging;
+- controlled mini-prompt and task runner helpers;
+- `v4_session_lifecycle.py` for start/event/check-report/finish/suggest lifecycle operations;
+- doctor and contract validation checks.
 
-## Final Receipt
+## Template Layer
 
-The agent closes with a structured receipt that records what changed, what was checked and what remains limited.
+`templates/*.md` provides reusable forms for project operating files, final receipts, prompt-chain traces, handoff notes and lifecycle receipts.
+
+## Local Evolution Layer
+
+`evolution/*.jsonl` files store local/private event logs, usage logs and improvement candidates. They support review and improvement, but they are not public proof and should not be copied into documentation.
+
+## Hook Readiness Layer
+
+`hooks-readiness/` contains proposal-only material for project-local hooks. This layer is not active by default and does not change global Codex configuration.
+
+## What Is Automatic Locally
+
+When the skill is used, V4 should automatically apply its session discipline: compact pre-edit thinking, lifecycle status declarations, report checking when feasible and event logging when safe.
+
+## What Is Advisory
+
+The skill guides the agent. Without separate runtime enforcement or trusted project-local hooks, the discipline depends on the agent following the skill instructions.

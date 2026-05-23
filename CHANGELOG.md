@@ -1,5 +1,15 @@
 # Changelog
 
+## [Unreleased]
+
+- Aligned public documentation with the current local Robyroy-V4 design.
+- Added public explanation of the Karpathy Discipline Layer.
+- Added public explanation of the Trace / Logging Applicability Policy.
+- Added public explanation of the V4 Auto Session Lifecycle and lifecycle receipt statuses.
+- Clarified that event logs are local/private runtime artifacts, not public evidence.
+- Clarified hook readiness as project-local, proposal-only and manually reviewed.
+- Reaffirmed that Robyroy-V4 is not AIOS, not global enforcement and not a production security runtime.
+
 ## [0.1.1] - 2026-05-19
 
 - Added Codex Hook Readiness documentation.
